@@ -1,6 +1,6 @@
 = Gradle demo
 
-This project demonstrates the minimal setup of a multi-module project using Gradle 4.8+ and JDK 10.
+This project demonstrates a minimal setup of a multi-module project using Gradle 4.8+, JDK 10 and IntelliJ IDE.
 
 === Modules
 
@@ -83,6 +83,7 @@ The following libraries have been downloaded with `java` and `gradle` included i
 
 - http://www.oracle.com/technetwork/java/javase/downloads/index.html[JDK 10]
 - https://gradle.org/releases/[Gradle 4.8+]
+- https://www.jetbrains.com/idea/download/[IntelliJ IDEA]
 
 === Building the application
 
