@@ -2,27 +2,34 @@ plugins {
     id "io.spring.dependency-management" version "1.0.5.RELEASE"
 }
 
+ext {
+    javaVersion = JavaVersion.VERSION_1_10
+}
+
 subprojects {
 
     apply plugin: 'java'
     apply plugin: 'idea'
     apply plugin: "io.spring.dependency-management"
 
-    project.buildDir = file("${project.parent.buildDir}/${project.name}")
+    group = 'app'
+    version = '1.0.0-SNAPSHOT'
 
     repositories {
         jcenter()
     }
 
     compileJava {
-        sourceCompatibility = JavaVersion.VERSION_1_10
-        targetCompatibility = JavaVersion.VERSION_1_10
-
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
+        buildDir = file("${project.parent.buildDir}/${project.name}")
         doFirst {
-            options.compilerArgs = [
-                '--module-path', classpath.asPath,
-            ]
-            classpath = files()
+            if (javaVersion.isJava9Compatible()) {
+                options.compilerArgs = [
+                    '--module-path', classpath.asPath,
+                ]
+                classpath = files()
+            }
         }
     }
 
@@ -30,6 +37,9 @@ subprojects {
         main {
             java {
                 srcDirs = ['main/java']
+                if (!javaVersion.isJava9Compatible()) {
+                    exclude 'module-info.java'
+                }
             }
             resources {
                 srcDirs = ['main/resources']
@@ -47,7 +57,7 @@ subprojects {
 
     idea {
         module {
-            def baseOutDir = "${project.parent.projectDir}/out/${project.name}"
+            def baseOutDir = "${parent.projectDir}/out/${name}"
             outputDir file("${baseOutDir}/classes/main")
             testOutputDir file("${baseOutDir}/classes/test")
         }

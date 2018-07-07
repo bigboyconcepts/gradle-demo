@@ -1,6 +1,6 @@
 = Gradle demo
 
-This project demonstrates a minimal setup of a multi-module project using Gradle 4.8+, JDK 10 and IntelliJ IDE.
+This project demonstrates a minimal setup of a multi-module project using Gradle 4.8+, JDK 8+ and IntelliJ IDEA.
 
 === Modules
 
@@ -81,8 +81,8 @@ This project demonstrates a minimal setup of a multi-module project using Gradle
 
 The following libraries have been downloaded with `java` and `gradle` included in the system `PATH`.
 
-- http://www.oracle.com/technetwork/java/javase/downloads/index.html[JDK 10]
-- https://gradle.org/releases/[Gradle 4.8+]
+- http://www.oracle.com/technetwork/java/javase/downloads/index.html[JDK 8 or above]
+- https://gradle.org/releases/[Gradle 4.8 or above]
 - https://www.jetbrains.com/idea/download/[IntelliJ IDEA]
 
 === Building the application
@@ -100,4 +100,4 @@ Compiled classes and resource files should be generated at `${projectDir}/build/
 
 . Create module directory (say `moduleDir`) at `${projectDir}/src/${moduleName}`.
 . Create `build.gradle` under `moduleDir` which specifies the dependencies for the module.
-. Create `module-info.java` under `${moduleDir}/main/java` which complies with https://www.oracle.com/corporate/features/understanding-java-9-modules.html[Java module system] introduced in Java 9.
+. For JDK 9 or above, create `module-info.java` under `${moduleDir}/main/java` which complies with https://www.oracle.com/corporate/features/understanding-java-9-modules.html[Java module system] introduced in Java 9.
