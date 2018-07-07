@@ -1,0 +1,22 @@
+plugins {
+    // Apply the application plugin to add support for building an application
+    id 'application'
+}
+
+mainClassName = 'app.module.ModuleApplication'
+
+ext {
+    guavaVersion = '23.0'
+    junitVersion = '5.2.0'
+}
+
+dependencies {
+    implementation project(':app.service')
+
+    // This dependency is found on compile classpath of this component and consumers.
+    implementation "com.google.guava:guava:${guavaVersion}"
+
+    // Use JUnit test framework
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+}
+

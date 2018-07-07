@@ -1,0 +1,102 @@
+= Gradle demo
+
+This project demonstrates the minimal setup of a multi-module project using Gradle 4.8+ and JDK 10.
+
+=== Modules
+
+|===
+|Module name|Description
+
+|app-util|Base utilities for the application
+|app-service|Services for the application
+|app-module|Module level executables
+|===
+
+=== Module dependencies
+
+[ditaa]
+....
+/--------------\
+| app--module  |
+\--------------/
+      |
+      |depends
+      v
+/--------------\
+| app--service |
+\--------------/
+      |
+      |depends
+      v
+/-----------\
+| app--util |
+\-----------/
+....
+
+
+=== Project file structure
+
+[cols="3,7"]
+|===
+|Type|Relative path to `projectDir`
+
+|Module main Java source root|`src/${moduleName}/main/java`
+|Module main resource root|`src/${moduleName}/main/resources`
+|Module test Java source root|`src/${moduleName}/test/java`
+|Module test resource root|`src/${moduleName}/test/resources`
+|Module level Gradle build directory|`src/build/${moduleName}`
+|Module level IDEA build directory|`src/out/${moduleName}`
+|===
+
+==== Tree view
+
+ gradle-demo
+ ├───src
+ │   ├───app.module
+ │   │   ├───main
+ │   │   │   ├───java
+ │   │   │   └───resources
+ │   │   ├───test
+ │   │   │   ├───java
+ │   │   │   └───resources
+ │   ├───app.service
+ │   │   ├───main
+ │   │   │   ├───java
+ │   │   │   └───resources
+ │   │   ├───test
+ │   │   │   ├───java
+ │   │   │   └───resources
+ │   └───app.core
+ │       ├───main
+ │       │   ├───java
+ │       │   └───resources
+ │       └───test
+ │           ├───java
+ │           └───resources
+ ├───build.gradle
+ └───settings.gradle
+
+
+=== Prerequisites
+
+The following libraries have been downloaded with `java` and `gradle` included in the system `PATH`.
+
+- http://www.oracle.com/technetwork/java/javase/downloads/index.html[JDK 10]
+- https://gradle.org/releases/[Gradle 4.8+]
+
+=== Building the application
+
+ gradle clean build
+
+Compiled classes and resource files should be generated at `${projectDir}/build/${moduleName}/classes` for each module.
+
+=== Running the application
+
+ cd src/app.module
+ gradle run
+
+=== Creating a module
+
+. Create module directory (say `moduleDir`) at `${projectDir}/src/${moduleName}`.
+. Create `build.gradle` under `moduleDir` which specifies the dependencies for the module.
+. Create `module-info.java` under `${moduleDir}/main/java` which complies with https://www.oracle.com/corporate/features/understanding-java-9-modules.html[Java module system] introduced in Java 9.
