@@ -1,11 +1,14 @@
 package app.module;
 
-import app.service.CoreService;
+import app.service.MathService;
+import app.service.ext.ExtensionService;
 
 public class ModuleApplication {
 
     public static void main(String[] args) {
-        CoreService coreService = new CoreService();
-        System.out.printf("%s + %s = %s%n", 1, 2, coreService.sum(1, 2));
+        MathService mathService = new MathService();
+        ExtensionService extService = new ExtensionService();
+        System.out.printf("%s + %s = %s%n", 1, 2, mathService.sum(1, 2));
+        System.out.printf("Extension = %s%n", extService.getExtension(1, 2));
     }
 }

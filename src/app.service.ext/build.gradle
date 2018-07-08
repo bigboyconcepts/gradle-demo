@@ -1,5 +1,5 @@
 dependencies {
-    implementation "com.google.guava:guava:${guavaVersion}"
+    implementation project(":app.service")
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
 }

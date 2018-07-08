@@ -5,6 +5,8 @@
 /dist
 /out
 /**/*.iml
+/*.ipr
+/*.iws
 
 # logs
 /log

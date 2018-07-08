@@ -10,4 +10,9 @@ public class MathUtilTest {
     public void sum() {
         assertEquals(3, MathUtil.sum(1, 2));
     }
+
+    @Test
+    public void multiply() {
+        assertEquals(6, MathUtil.multiply(2, 3));
+    }
 }
